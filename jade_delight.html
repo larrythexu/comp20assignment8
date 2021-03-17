@@ -74,7 +74,6 @@
         <th>Total Cost</th>
       </tr>
       <script language="javascript">
-
         var s = "";
         for (i = 0; i < menuItems.length; i++) {
           s += "<tr><td>";
@@ -84,7 +83,6 @@
           s += "<td>$<input type='text' name='cost'/></td></tr>";
         }
         document.writeln(s);
-
       </script>
     </table>
     <p>Subtotal:
@@ -184,8 +182,10 @@
         if ($("input[name=p_or_d]:checked").val() == "pickup") {
           //add 15 mins
           timeDay.setMinutes(timeDay.getMinutes() + 15);
-          timeOutput = timeDay.toLocaleTimeString([],
-                                       {hour: '2-digit', minute: '2-digit'});
+          timeOutput = timeDay.toLocaleTimeString([], {
+            hour: '2-digit',
+            minute: '2-digit'
+          });
 
           $("#orderTime").html("Your estimated order time: " + timeOutput);
 
@@ -212,8 +212,10 @@
 
           //add 30 mins
           timeDay.setMinutes(timeDay.getMinutes() + 30);
-          timeOutput = timeDay.toLocaleTimeString([],
-                                       {hour: '2-digit', minute: '2-digit'});
+          timeOutput = timeDay.toLocaleTimeString([], {
+            hour: '2-digit',
+            minute: '2-digit'
+          });
 
           $("#orderTime").html("Your estimated order time: " + timeOutput);
 
@@ -231,7 +233,7 @@
         }
         //final verification
         if (validOrder && validName && validPhone && validStreet &&
-            validCity) {
+          validCity) {
 
           //order string
           fullOrder = "";
@@ -239,7 +241,7 @@
             //find if item has orders
             orderQuan = $("select[name^=quan]")[i].value;
 
-            if (orderQuan != 0){
+            if (orderQuan != 0) {
               fullOrder += orderQuan + "x " + menuItems[i].name + "<br>";
             }
           }
@@ -247,14 +249,14 @@
           //display results in new window
           newWindow = window.open("");
           newWindow.document.write("Thank you for your order. " +
-                "Below is your full order: <br><br>" +
-                fullOrder + "<br>" +
-                "Your order's arrival: " + timeOutput + "<br>" +
-                "Your order's total cost: $" + totalNum.toFixed(2));
+            "Below is your full order: <br><br>" +
+            fullOrder + "<br>" +
+            "Your order's arrival: " + timeOutput + "<br>" +
+            "Your order's total cost: $" + totalNum.toFixed(2));
 
         } else {
           alertString = "Your order was not completed due to the " +
-                        "following errors: \n";
+            "following errors: \n";
 
           if (!validName) {
             alertString += "- Missing Last Name\n";
@@ -274,7 +276,6 @@
 
           alert(alertString);
         }
-
       })
     </script>
   </form>
