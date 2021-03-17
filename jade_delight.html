@@ -161,13 +161,15 @@
         }
 
         //if no phone num
-        phoneNum = parseInt($("input[name=phone]").val());
+        phoneString = $("input[name=phone]").val();
+        phoneNum = parseInt(phoneString);
 
         if (!$("input[name=phone]").val()) {
           $("#phoneWarn").html("Missing Phone Number!");
           $("#phoneWarn").show();
           validPhone = false;
-        } else if (isNaN(phoneNum) || (phoneNum.toString().length != 10)) {
+        } else if (isNaN(phoneNum) || (phoneString.length != 10) ||
+                   phoneNum.toString().length != 10) {
           $("#phoneWarn").html("Invalid Phone Number!");
           $("#phoneWarn").show();
           validPhone = false;
